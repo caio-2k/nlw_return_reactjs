@@ -6,6 +6,16 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model Feedback {
+  // id is pk row (prima needs this to not show errors)
+  id         String  @id @default(uuid())
+  type       String
+  comment    String
+  screenshot String?
+
+  @@map("feedbacks")
 }
